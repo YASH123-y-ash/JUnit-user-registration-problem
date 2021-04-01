@@ -14,5 +14,4 @@ public class UserRegistrationValidationTest {
     public void fNValidation() {
         Assert.assertTrue(user.firstName("Yas"));
     }
-
 }
