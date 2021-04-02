@@ -97,7 +97,7 @@ public class UserRegistrationValidationTest {
     }
 
     @Test
-    /*UC-7-validating password having minimum 8 character
+    /*UC7-validating password having minimum 8 character
      * password having minimum 1 upperCase character and
      * password will have minimum 1 numeric value
      */
@@ -106,4 +106,16 @@ public class UserRegistrationValidationTest {
         boolean check = userRegistrationValidation.passwordCheck_ForAtLeast_OneNumericCharacter("Qwerty123@");
         Assert.assertEquals(true, check);
     }
+
+    @Test
+    /*UC8-validating password for exactly one special character should return true
+    * and all rule should passed
+    */
+    public void givenPassword_WithExactlyOneSpecialCharacter_ShouldReturnTrue()
+    {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        boolean check = userRegistrationValidation.passwordCheck_ForExactly_OneSpecialCharacter("Qwerty12@");
+        Assert.assertEquals(true,check);
+    }
+
 }

@@ -55,5 +55,15 @@ public class UserRegistrationValidation {
                 && Pattern.matches(".*[A-Z].*", number)
                 && Pattern.matches(".*[0-9].*", number)) == true);
     }
+
+    //UC8-validating password for exactly 1 special character
+    public boolean passwordCheck_ForExactly_OneSpecialCharacter(String password)
+    {
+        return ((Pattern.matches("[A-Z0-9a-z$%&*@!#]{8,}", password)
+                && Pattern.matches(".*[A-Z].*", password)
+                && Pattern.matches(".*[0-9].*", password)
+                && Pattern.matches(".*[\\W]{1}.*", password)) == true);
+
+    }
 }
 
