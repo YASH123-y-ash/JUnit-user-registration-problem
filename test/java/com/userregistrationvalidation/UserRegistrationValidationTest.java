@@ -62,4 +62,21 @@ public class UserRegistrationValidationTest {
         boolean check = userRegistrationValidation.mobileNo("9123456624");
         Assert.assertEquals(false,check);
     }
+
+    @Test
+    //UC5-validating for password with minimum 8 characters should return true
+    public void givenPassword_ShouldReturnTrue()
+    {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        boolean check = userRegistrationValidation.passwordCheck("qwerty123@");
+        Assert.assertEquals(true,check);
+    }
+    @Test
+    //UC5-validating password having less than 8 characters should return false
+    public void givenPassword_ShouldReturnFalse()
+    {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        boolean check = userRegistrationValidation.passwordCheck("yetet@");
+        Assert.assertEquals(false,check);
+    }
 }
