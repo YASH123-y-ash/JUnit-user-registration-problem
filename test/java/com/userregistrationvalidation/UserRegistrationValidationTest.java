@@ -84,7 +84,7 @@ public class UserRegistrationValidationTest {
     public void givenPassword_ForMinimumOneUpperCase_ShouldReturnTrue()
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.passwordCheckForAtLeastOneUpperCase("Qwerty123@");
+        boolean check = userRegistrationValidation.passwordCheck_ForAtLeast_OneUpperCase("Qwerty123@");
         Assert.assertEquals(true,check);
     }
     @Test
@@ -92,7 +92,18 @@ public class UserRegistrationValidationTest {
     public void givenPassword_WithNoUpperCase_ShouldReturnFalse()
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.passwordCheckForAtLeastOneUpperCase("qwerty123@");
+        boolean check = userRegistrationValidation.passwordCheck_ForAtLeast_OneUpperCase("qwerty123@");
         Assert.assertEquals(false,check);
+    }
+
+    @Test
+    /*UC-7-validating password having minimum 8 character
+     * password having minimum 1 upperCase character and
+     * password will have minimum 1 numeric value
+     */
+    public void givenPassword_WithMinimumOneNumber_ShouldReturnTrue() {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        boolean check = userRegistrationValidation.passwordCheck_ForAtLeast_OneNumericCharacter("Qwerty123@");
+        Assert.assertEquals(true, check);
     }
 }
