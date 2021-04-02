@@ -37,4 +37,12 @@ public class UserRegistrationValidationTest {
         boolean check = userRegistrationValidation.lastName("wardhan");
         Assert.assertEquals(false,check);
     }
+    @Test
+    //UC3-to validate emailID
+    public void givenEmailId_ShouldReturnTrue()
+    {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        boolean check = userRegistrationValidation.emailId("wardhan123@gmail.com");
+        Assert.assertEquals(true,check);
+    }
 }
