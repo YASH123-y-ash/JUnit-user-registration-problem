@@ -45,4 +45,21 @@ public class UserRegistrationValidationTest {
         boolean check = userRegistrationValidation.emailId("wardhan123@gmail.com");
         Assert.assertEquals(true,check);
     }
+
+    @Test
+    // UC4-validating mobile number with country code followed by space and number
+    public void givenMobileNumber_ShouldReturnTrue()
+    {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        boolean check = userRegistrationValidation.mobileNo("91 9134567872");
+        Assert.assertEquals(true,check);
+    }
+    //UC4-validating mobile number without country code followed by space
+    @Test
+    public void givenMobileNumber_ShouldReturnFalse()
+    {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        boolean check = userRegistrationValidation.mobileNo("9123456624");
+        Assert.assertEquals(false,check);
+    }
 }

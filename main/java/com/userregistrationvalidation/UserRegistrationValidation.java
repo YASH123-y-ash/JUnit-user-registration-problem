@@ -25,4 +25,10 @@ public class UserRegistrationValidation {
     {
         return (Pattern.matches("[a-zA-Z0-9][a-zA-Z0-9_.]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+", email) == true);
     }
+
+    // UC4-validating mobile number
+    public boolean mobileNo(String number)
+    {
+        return(Pattern.matches("(0|91)?\\s{1}[6-9][0-9]{9}", number) == true);
+    }
 }
