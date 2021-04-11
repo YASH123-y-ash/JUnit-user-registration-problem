@@ -1,14 +1,12 @@
 package com.userregistrationvalidation;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
-
-import javax.xml.namespace.QName;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class UserRegistrationValidationTest {
 
     UserRegistrationValidation user= new UserRegistrationValidation();
-    private Assertions Assert;
+
     @Test
     //UC1-to validate first name
     public void fNValidation() {
