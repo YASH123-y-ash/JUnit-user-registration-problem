@@ -62,7 +62,12 @@ public class UserRegistrationValidation {
                 && Pattern.matches(".*[A-Z].*", password)
                 && Pattern.matches(".*[0-9].*", password)
                 && Pattern.matches(".*[\\W]{1}.*", password)) == true);
+    }
 
+    //UC9-validating email
+    public boolean emailCheck(String email)
+    {
+        return (Pattern.matches("[a-z A-Z 0-9][a-z A-Z 0-9_.]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+", email)) == true;
     }
 }
 

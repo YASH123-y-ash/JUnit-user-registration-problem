@@ -1,7 +1,7 @@
 package com.userregistrationvalidation;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class UserRegistrationValidationTest {
 
@@ -10,14 +10,14 @@ public class UserRegistrationValidationTest {
     @Test
     //UC1-to validate first name
     public void fNValidation() {
-        Assert.assertTrue(user.firstName("Yash"));
+        Assertions.assertTrue(user.firstName("Yash"));
     }
     @Test
     //UC1-to validate first name
     public void givenFirstName_WhereLowerCase_ShouldReturnFalse() {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
         boolean check = userRegistrationValidation.firstName("yas");
-        Assert.assertEquals(false, check);
+        Assertions.assertEquals(false, check);
     }
     @Test
     // UC2-to validate last name if first letter is in upperCase
@@ -25,7 +25,7 @@ public class UserRegistrationValidationTest {
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
         boolean check = userRegistrationValidation.lastName("Ward");
-        Assert.assertEquals(true,check);
+        Assertions.assertEquals(true,check);
     }
     @Test
     //UC2-to validate last name if first letter is in lowerCase
@@ -33,7 +33,7 @@ public class UserRegistrationValidationTest {
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
         boolean check = userRegistrationValidation.lastName("wardhan");
-        Assert.assertEquals(false,check);
+        Assertions.assertEquals(false,check);
     }
     @Test
     //UC3-to validate emailID
@@ -41,7 +41,7 @@ public class UserRegistrationValidationTest {
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
         boolean check = userRegistrationValidation.emailId("wardhan123@gmail.com");
-        Assert.assertEquals(true,check);
+        Assertions.assertEquals(true,check);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class UserRegistrationValidationTest {
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
         boolean check = userRegistrationValidation.mobileNo("91 9134567872");
-        Assert.assertEquals(true,check);
+        Assertions.assertEquals(true,check);
     }
     //UC4-validating mobile number without country code followed by space
     @Test
@@ -58,7 +58,7 @@ public class UserRegistrationValidationTest {
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
         boolean check = userRegistrationValidation.mobileNo("9123456624");
-        Assert.assertEquals(false,check);
+        Assertions.assertEquals(false,check);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class UserRegistrationValidationTest {
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
         boolean check = userRegistrationValidation.passwordCheck("qwerty123@");
-        Assert.assertEquals(true,check);
+        Assertions.assertEquals(true,check);
     }
     @Test
     //UC5-validating password having less than 8 characters should return false
@@ -75,7 +75,7 @@ public class UserRegistrationValidationTest {
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
         boolean check = userRegistrationValidation.passwordCheck("yetet@");
-        Assert.assertEquals(false,check);
+        Assertions.assertEquals(false,check);
     }
     @Test
     //UC6-validating password having minimum 1 upperCase character should return true
@@ -83,7 +83,7 @@ public class UserRegistrationValidationTest {
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
         boolean check = userRegistrationValidation.passwordCheck_ForAtLeast_OneUpperCase("Qwerty123@");
-        Assert.assertEquals(true,check);
+        Assertions.assertEquals(true,check);
     }
     @Test
     //UC6-validating password having no upperCase character should return false
@@ -91,7 +91,7 @@ public class UserRegistrationValidationTest {
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
         boolean check = userRegistrationValidation.passwordCheck_ForAtLeast_OneUpperCase("qwerty123@");
-        Assert.assertEquals(false,check);
+        Assertions.assertEquals(false,check);
     }
 
     @Test
@@ -102,7 +102,7 @@ public class UserRegistrationValidationTest {
     public void givenPassword_WithMinimumOneNumber_ShouldReturnTrue() {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
         boolean check = userRegistrationValidation.passwordCheck_ForAtLeast_OneNumericCharacter("Qwerty123@");
-        Assert.assertEquals(true, check);
+        Assertions.assertEquals(true, check);
     }
 
     @Test
@@ -113,7 +113,25 @@ public class UserRegistrationValidationTest {
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
         boolean check = userRegistrationValidation.passwordCheck_ForExactly_OneSpecialCharacter("Qwerty12@");
-        Assert.assertEquals(true,check);
+        Assertions.assertEquals(true,check);
+    }
+
+    @Test
+    //UC9-validating email should return true
+    public void givenEmail_ShouldReturnTrue()
+    {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        boolean check = userRegistrationValidation.emailCheck("yash123@gmil.com");
+        Assertions.assertEquals(true,check);
+    }
+
+    @Test
+    //UC9-validating email should return false
+    public void givenEmail_ShouldReturnFalse()
+    {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        boolean check = userRegistrationValidation.emailCheck("@gmil.com");
+        Assertions.assertEquals(false,check);
     }
 
 }
