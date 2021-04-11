@@ -8,90 +8,108 @@ public class UserRegistrationValidationTest {
     UserRegistrationValidation user= new UserRegistrationValidation();
 
     @Test
-    //UC1-to validate first name
-    public void fNValidation() {
-        Assertions.assertTrue(user.firstName("Yash"));
+    //UC1-to validate first name should return Happy
+    public void firstNameValidation_ShouldReturnHappy() {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        String result = userRegistrationValidation.firstName("Yash");
+        Assertions.assertEquals("Happy",result);
     }
     @Test
-    //UC1-to validate first name
-    public void givenFirstName_WhereLowerCase_ShouldReturnFalse() {
+    //UC1-to validate first name should return Sad
+    public void givenFirstName_WhereLowerCase_ShouldReturnSad() {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.firstName("yas");
-        Assertions.assertEquals(false, check);
-    }
-    @Test
-    // UC2-to validate last name if first letter is in upperCase
-    public void givenLastName_WhereCapitaLetter_ShouldReturnTrue()
-    {
-        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.lastName("Ward");
-        Assertions.assertEquals(true,check);
-    }
-    @Test
-    //UC2-to validate last name if first letter is in lowerCase
-    public void givenLastName_WhereLowerCase_ShouldReturnFalse()
-    {
-        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.lastName("wardhan");
-        Assertions.assertEquals(false,check);
-    }
-    @Test
-    //UC3-to validate emailID
-    public void givenEmailId_ShouldReturnTrue()
-    {
-        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.emailId("wardhan123@gmail.com");
-        Assertions.assertEquals(true,check);
+        String  result = userRegistrationValidation.firstName("yas");
+        Assertions.assertEquals("Sad", result);
     }
 
     @Test
-    // UC4-validating mobile number with country code followed by space and number
-    public void givenMobileNumber_ShouldReturnTrue()
+    // UC2-to validate last name if first letter is in upperCase should retrun happy
+    public void givenLastName_WhereCapitaLetter_ShouldReturnHappy()
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.mobileNo("91 9134567872");
-        Assertions.assertEquals(true,check);
-    }
-    //UC4-validating mobile number without country code followed by space
-    @Test
-    public void givenMobileNumber_ShouldReturnFalse()
-    {
-        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.mobileNo("9123456624");
-        Assertions.assertEquals(false,check);
+        String result = userRegistrationValidation.lastName("Ward");
+        Assertions.assertEquals("Happy",result);
     }
 
     @Test
-    //UC5-validating for password with minimum 8 characters should return true
-    public void givenPassword_ShouldReturnTrue()
+    //UC2-to validate last name if first letter is in lowerCase should return sad
+    public void givenLastName_WhereLowerCase_ShouldReturnSad()
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.passwordCheck("qwerty123@");
-        Assertions.assertEquals(true,check);
+        String result = userRegistrationValidation.lastName("wardhan");
+        Assertions.assertEquals("Sad",result);
     }
+
     @Test
-    //UC5-validating password having less than 8 characters should return false
-    public void givenPassword_ShouldReturnFalse()
+    //UC3-to validate emailID should return Happy
+    public void givenEmailId_ShouldReturnHappy()
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.passwordCheck("yetet@");
-        Assertions.assertEquals(false,check);
+        String  result = userRegistrationValidation.emailId("wardhan123@gmail.com");
+        Assertions.assertEquals("Happy",result);
     }
+
     @Test
-    //UC6-validating password having minimum 1 upperCase character should return true
-    public void givenPassword_ForMinimumOneUpperCase_ShouldReturnTrue()
+    //UC3-to validate emailID should return Sad
+    public void givenEmailId_ShouldReturnSad()
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.passwordCheck_ForAtLeast_OneUpperCase("Qwerty123@");
-        Assertions.assertEquals(true,check);
+        String  result = userRegistrationValidation.emailId("@123@gmail.com");
+        Assertions.assertEquals("Sad",result);
     }
+
     @Test
-    //UC6-validating password having no upperCase character should return false
-    public void givenPassword_WithNoUpperCase_ShouldReturnFalse()
+    // UC4-validating mobile number with country code followed by space and number should return Happy
+    public void givenMobileNumber_ShouldReturnHappy()
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.passwordCheck_ForAtLeast_OneUpperCase("qwerty123@");
-        Assertions.assertEquals(false,check);
+        String check = userRegistrationValidation.mobileNo("91 9134567872");
+        Assertions.assertEquals("Happy",check);
+    }
+
+    //UC4-validating mobile number without country code followed by space should return Sad
+    @Test
+    public void givenMobileNumber_ShouldReturnSad()
+    {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        String check = userRegistrationValidation.mobileNo("9123456624");
+        Assertions.assertEquals("Sad",check);
+    }
+
+    @Test
+    //UC5-validating for password with minimum 8 characters should return Happy
+    public void givenPassword_ShouldReturnHappy()
+    {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        String check = userRegistrationValidation.passwordCheck("qwerty123@");
+        Assertions.assertEquals("Happy",check);
+    }
+
+    @Test
+    //UC5-validating password having less than 8 characters should return Sad
+    public void givenPassword_ShouldReturnSad()
+    {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        String check = userRegistrationValidation.passwordCheck("yetet@");
+        Assertions.assertEquals("Sad",check);
+    }
+
+    @Test
+    //UC6-validating password having minimum 1 upperCase character should return Happy
+    public void givenPassword_ForMinimumOneUpperCase_ShouldReturnHappy()
+    {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        String check = userRegistrationValidation.passwordCheck_ForAtLeast_OneUpperCase("Qwerty123@");
+        Assertions.assertEquals("Happy",check);
+    }
+
+    @Test
+    //UC6-validating password having no upperCase character should return Sad
+    public void givenPassword_WithNoUpperCase_ShouldReturnSad()
+    {
+        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
+        String check = userRegistrationValidation.passwordCheck_ForAtLeast_OneUpperCase("qwerty123@");
+        Assertions.assertEquals("Sad",check);
     }
 
     @Test
@@ -99,39 +117,32 @@ public class UserRegistrationValidationTest {
      * password having minimum 1 upperCase character and
      * password will have minimum 1 numeric value
      */
-    public void givenPassword_WithMinimumOneNumber_ShouldReturnTrue() {
+    public void givenPassword_WithMinimumOneNumber_ShouldReturnHappy() {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.passwordCheck_ForAtLeast_OneNumericCharacter("Qwerty123@");
-        Assertions.assertEquals(true, check);
+        String check = userRegistrationValidation.passwordCheck_ForAtLeast_OneNumericCharacter("Qwerty123@");
+        Assertions.assertEquals("Happy", check);
     }
 
     @Test
     /*UC8-validating password for exactly one special character should return true
     * and all rule should passed
     */
-    public void givenPassword_WithExactlyOneSpecialCharacter_ShouldReturnTrue()
+    public void givenPassword_WithExactlyOneSpecialCharacter_ShouldReturnHappy()
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.passwordCheck_ForExactly_OneSpecialCharacter("Qwerty12@");
-        Assertions.assertEquals(true,check);
+        String  check = userRegistrationValidation.passwordCheck_ForExactly_OneSpecialCharacter("Qwerty12@");
+        Assertions.assertEquals("Happy",check);
     }
 
     @Test
-    //UC9-validating email should return true
-    public void givenEmail_ShouldReturnTrue()
+    /*UC8-validating password for exactly no special character should return sad
+     * and all rule should passed
+     */
+    public void givenPassword_WithExactlyOneSpecialCharacter_ShouldReturnSad()
     {
         UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.emailCheck("yash123@gmil.com");
-        Assertions.assertEquals(true,check);
-    }
-
-    @Test
-    //UC9-validating email should return false
-    public void givenEmail_ShouldReturnFalse()
-    {
-        UserRegistrationValidation userRegistrationValidation = new UserRegistrationValidation();
-        boolean check = userRegistrationValidation.emailCheck("@gmil.com");
-        Assertions.assertEquals(false,check);
+        String  check = userRegistrationValidation.passwordCheck_ForExactly_OneSpecialCharacter("Qwerty12");
+        Assertions.assertEquals("Sad",check);
     }
 
 }
